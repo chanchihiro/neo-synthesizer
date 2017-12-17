@@ -25,7 +25,7 @@ let bufferLoader = new BufferLoader(
 bufferLoader.load();
 
 // 実行して、メモをスケジューリングする
-var timerWorker = new Worker('./timerworker.js'); /////////////////////////////ここ書き換える
+var timerWorker = new Worker('timerworker.js'); /////////////////////////////ここ書き換える
 timerWorker.postMessage({"interval": SCHEDULER_TICK});
 
 

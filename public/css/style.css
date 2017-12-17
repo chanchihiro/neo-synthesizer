@@ -198,7 +198,8 @@ body {
       body #main #about #about_text {
         line-height: 24px; }
         body #main #about #about_text p {
-          margin-top: 20px; }
+          margin-top: 32px;
+          line-height: 26px; }
     body #main .inner_top {
       width: 320px;
       height: 500px;
