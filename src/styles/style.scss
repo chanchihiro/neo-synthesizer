@@ -6,11 +6,20 @@
 
 body {
 	font-family: "yugothic";
-	font-weight: bold;
 	font-size: 14px;
 	background-image: url(../img/bg2.jpg);
 	background-size: 20%;
 	color: $black;
+    animation: bgscroll 50s linear infinite;
+    -webkit-animation: bgscroll 50s linear infinite;
+	@-webkit-keyframes bgscroll {
+		0% {background-position: 0 0;}
+		100% {background-position: 0 -500px;}
+	}
+	@keyframes bgscroll {
+		0% {background-position: 0 0;}
+		100% {background-position: 0 -500px;}
+	}
 	@include max-screen($breakpoint-mobile) {
 		font-size: 12px;
 	}

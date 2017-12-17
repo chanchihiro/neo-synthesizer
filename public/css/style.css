@@ -143,11 +143,24 @@ legend {
 
 body {
   font-family: "yugothic";
-  font-weight: bold;
   font-size: 14px;
   background-image: url(../img/bg2.jpg);
   background-size: 20%;
-  color: #292929; }
+  color: #292929;
+  animation: bgscroll 50s linear infinite;
+  -webkit-animation: bgscroll 50s linear infinite; }
+
+@-webkit-keyframes bgscroll {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 0 -500px; } }
+
+@keyframes bgscroll {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 0 -500px; } }
   @media screen and (max-width: 750px) {
     body {
       font-size: 12px; } }
