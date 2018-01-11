@@ -4,6 +4,29 @@ import BufferLoader from "../bufferLoader.js";
 // スライダー入れたい
 
 
+let timerID = null;
+let interval = 100;
+
+self.onmessage = function(e){
+  if (e.data == "start") {
+	console.log("スタート");
+	timerID = setInterval( function() {postMessage("tick");}, interval)
+  } else if (e.data.interval) {
+	console.log("setting interval");
+	interval = e.data.iånterval;
+	console.log("interval=" + interval);
+	if (timerID) {
+	  clearInterval(timerID);
+	  timerID = setInterval(function() {postMessage("tick");}, interval)
+	}
+  } else if (e.data == "stop") {
+	console.log("stopping");
+	clearInterval(timerID);
+	timerID = null;
+  }
+};
+
+
 // 間隔を調整する(milliseconds, handled by javascript clock)
 let SCHEDULER_TICK = 25.0;
 // スケジューリング先読み（sec, handled by WebAudio clock)
@@ -25,7 +48,7 @@ let bufferLoader = new BufferLoader(
 bufferLoader.load();
 
 // 実行して、メモをスケジューリングする
-var timerWorker = new Worker('timerworker.js'); /////////////////////////////ここ書き換える
+var timerWorker = new Worker(self.onmessage); /////////////////////////////ここ書き換える
 timerWorker.postMessage({"interval": SCHEDULER_TICK});
 
 
